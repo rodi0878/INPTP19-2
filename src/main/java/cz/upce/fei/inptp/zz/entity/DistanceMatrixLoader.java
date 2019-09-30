@@ -18,16 +18,16 @@ import java.util.logging.Logger;
  * @author Roman
  */
 public class DistanceMatrixLoader {
-    
-    private String fiennm;
 
-    public DistanceMatrixLoader(String fiennm) {
-        this.fiennm = fiennm;
+    private String fileName;
+
+    public DistanceMatrixLoader(String fileName) {
+        this.fileName = fileName;
     }
-    
+
     public DistanceMatrix load() {
         try {
-            FileReader fr = new FileReader(fiennm);
+            FileReader fr = new FileReader(fileName);
             BufferedReader br = new BufferedReader(fr);
             
             String header = br.readLine();
