@@ -5,6 +5,8 @@
  */
 package cz.upce.fei.inptp.zz.entity;
 
+import java.util.Objects;
+
 /**
  *
  * @author Roman
@@ -16,21 +18,13 @@ public class Vehicle {
     // TODO:initial position?
 
     public Vehicle(String identifier, int capacity, VehicleType type) {
-        setIdentifier(identifier);
+        this.identifier = Objects.requireNonNull(identifier, "id should not be null!");
         this.capacity = capacity;
         this.type = type;
     }
   
     public String getIdentifier() {
         return identifier;
-    }
-
-    private void setIdentifier(String identifier) {
-        if ((identifier == null) || (identifier.isEmpty())) {
-            throw new NullPointerException("id should not be null!");
-        }
-
-        this.identifier = identifier;
     }
 
     public int getCapacity() {
