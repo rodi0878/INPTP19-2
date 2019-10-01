@@ -20,23 +20,23 @@ public class DistanceMatrix {
     }
     
     public double get(String from, String to) {
-        int f = -1, t = -1;
-        
-        for (int i = 0; i < locations.length; i++) {
-            String location = locations[i];
-            
-            if (location.equals(from))
-                f = i;
-        }
-        
-        for (int i = 0; i < locations.length; i++) {
-            String location = locations[i];
-            
-            if (location.equals(to))
-                t = i;
-        }
+        int f, t;
+
+        f = getLocationIndex(from);
+        t = getLocationIndex(to);
         
         return distances[f][t];
+    }
+
+    private int getLocationIndex(String value){
+        for (int i = 0; i < locations.length; i++) {
+            String location = locations[i];
+
+            if (location.equals(value)) {
+                return i;
+            }
+        }
+        return -1;
     }
     
     
