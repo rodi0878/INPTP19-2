@@ -18,38 +18,37 @@ import java.util.logging.Logger;
  * @author Roman
  */
 public class DistanceMatrixLoader {
-    
-    private String fiennm;
 
-    public DistanceMatrixLoader(String fiennm) {
-        this.fiennm = fiennm;
+    private String fileName;
+
+    public DistanceMatrixLoader(String fileName) {
+        this.fileName = fileName;
     }
-    
+
     public DistanceMatrix load() {
         try {
-            FileReader fr = new FileReader(fiennm);
-            BufferedReader br = new BufferedReader(fr);
+            FileReader fileReader = new FileReader(fileName);
+            BufferedReader bufferedReader = new BufferedReader(fileReader);
             
-            String header = br.readLine();
+            String header = bufferedReader.readLine();
             String[] tokens = header.split(";");
-            int locations = tokens.length-1;
+            int numberOfLocations = tokens.length-1;
             
-            String[] locationss = Arrays.copyOfRange(tokens, 1, tokens.length);
-            double[][] dista = new double[locations][locations];
+            String[] locations = Arrays.copyOfRange(tokens, 1, tokens.length);
+            double[][] distances = new double[numberOfLocations][numberOfLocations];
             
-            for (int i = 0; i < locations; i++) {
-                String l = br.readLine();
-                String[] tokens2 = l.split(";");
+            for (int i = 0; i < numberOfLocations; i++) {
+                String loadedLine = bufferedReader.readLine();
+                String[] tokensOnLine = loadedLine.split(";");
                 
-                for (int j = 1; j < tokens2.length; j++) {
-                    double val = Double.parseDouble(tokens2[j]);
-                    
-                    dista[i][j-1] = val; 
+                for (int j = 1; j < tokensOnLine.length; j++) {
+                    double value = Double.parseDouble(tokensOnLine[j]);                    
+                    distances[i][j-1] = value; 
                 }
                 
             }
             
-            return new DistanceMatrix(locationss, dista);
+            return new DistanceMatrix(locations, distances);
         } catch (FileNotFoundException ex) {
         } catch (IOException ex) {
         }

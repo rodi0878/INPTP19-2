@@ -5,23 +5,24 @@
  */
 package cz.upce.fei.inptp.zz.entity;
 
+import java.util.Objects;
+
 /**
  *
  * @author Roman
  */
 public class Vehicle {
-    private String identifier; // id should not be null
+    private String identifier;
     private int capacity; // capacity should be nonzero and positive number
     private VehicleType type;
     // TODO:initial position?
 
     public Vehicle(String identifier, int capacity, VehicleType type) {
-        this.identifier = identifier;
+        this.identifier = Objects.requireNonNull(identifier, "id should not be null!");
         this.capacity = capacity;
         this.type = type;
     }
-
-    
+  
     public String getIdentifier() {
         return identifier;
     }
