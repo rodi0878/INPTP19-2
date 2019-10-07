@@ -26,10 +26,9 @@ public class DistanceMatrixLoader {
     }
 
     public DistanceMatrix load() {
-        try {
-            FileReader fileReader = new FileReader(fileName);
-            BufferedReader bufferedReader = new BufferedReader(fileReader);
-            
+        try (FileReader fileReader = new FileReader(fileName);
+             BufferedReader bufferedReader = new BufferedReader(fileReader)) {
+
             String header = bufferedReader.readLine();
             String[] tokens = header.split(";");
             int numberOfLocations = tokens.length-1;
