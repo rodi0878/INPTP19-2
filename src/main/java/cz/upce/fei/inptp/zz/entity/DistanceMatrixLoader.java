@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package cz.upce.fei.inptp.zz.entity;
 
 import java.io.BufferedReader;
@@ -10,14 +5,14 @@ import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
 import java.util.Arrays;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 
 /**
  *
  * @author Roman
  */
 public class DistanceMatrixLoader {
+
+    private static final String COLUMN_SEPARATOR = ";";
 
     private String fileName;
 
@@ -26,27 +21,13 @@ public class DistanceMatrixLoader {
     }
 
     public DistanceMatrix load() {
-        try (FileReader fileReader = new FileReader(fileName);
-             BufferedReader bufferedReader = new BufferedReader(fileReader)) {
+        try (
+                FileReader fileReader = new FileReader(fileName);
+                BufferedReader bufferedReader = new BufferedReader(fileReader)
+        ) {
+            String[] locations = loadLocations(bufferedReader);
+            double[][] distances = loadDistances(bufferedReader, locations.length);
 
-            String header = bufferedReader.readLine();
-            String[] tokens = header.split(";");
-            int numberOfLocations = tokens.length-1;
-            
-            String[] locations = Arrays.copyOfRange(tokens, 1, tokens.length);
-            double[][] distances = new double[numberOfLocations][numberOfLocations];
-            
-            for (int i = 0; i < numberOfLocations; i++) {
-                String loadedLine = bufferedReader.readLine();
-                String[] tokensOnLine = loadedLine.split(";");
-                
-                for (int j = 1; j < tokensOnLine.length; j++) {
-                    double value = Double.parseDouble(tokensOnLine[j]);                    
-                    distances[i][j-1] = value; 
-                }
-                
-            }
-            
             return new DistanceMatrix(locations, distances);
         } catch (FileNotFoundException ex) {
         } catch (IOException ex) {
@@ -54,4 +35,26 @@ public class DistanceMatrixLoader {
         
         return null;
     }
+
+    private String[] loadLocations(BufferedReader reader) throws IOException {
+        String header = reader.readLine();
+        String[] tokens = header.split(COLUMN_SEPARATOR);
+        return Arrays.copyOfRange(tokens, 1, tokens.length);
+    }
+
+    private double[][] loadDistances(BufferedReader reader, int numberOfLocations) throws IOException {
+        double[][] distances = new double[numberOfLocations][numberOfLocations];
+
+        for (int i = 0; i < numberOfLocations; i++) {
+            String loadedLine = reader.readLine();
+            String[] tokensOnLine = loadedLine.split(COLUMN_SEPARATOR);
+
+            for (int j = 1; j < tokensOnLine.length; j++) {
+                distances[i][j - 1] = Double.parseDouble(tokensOnLine[j]);
+            }
+        }
+
+        return distances;
+    }
+
 }
