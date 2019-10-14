@@ -22,5 +22,8 @@ public class OrderTest {
     @Test
     public void testPositiveCapacity() {
         Order order = new Order("2", "3", 5);
+        assertEquals("2", order.getFrom());
+        assertEquals("3", order.getTo());
+        assertEquals(5, order.getCapacity());
     }   
 }
