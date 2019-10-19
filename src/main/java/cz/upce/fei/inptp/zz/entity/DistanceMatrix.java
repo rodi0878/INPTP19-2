@@ -1,9 +1,5 @@
 package cz.upce.fei.inptp.zz.entity;
 
-/**
- *
- * @author Roman
- */
 public class DistanceMatrix {
 
     private String[] locations;

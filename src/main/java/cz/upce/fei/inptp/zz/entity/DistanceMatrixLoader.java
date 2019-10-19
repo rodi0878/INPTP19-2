@@ -6,10 +6,6 @@ import java.io.FileReader;
 import java.io.IOException;
 import java.util.Arrays;
 
-/**
- *
- * @author Roman
- */
 public class DistanceMatrixLoader {
 
     private static final String COLUMN_SEPARATOR = ";";

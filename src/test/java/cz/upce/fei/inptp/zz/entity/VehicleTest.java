@@ -3,10 +3,6 @@ package cz.upce.fei.inptp.zz.entity;
 import org.junit.Test;
 import static org.junit.Assert.*;
 
-/**
- *
- * @author st52530
- */
 public class VehicleTest {
 
     @Test(expected = NullPointerException.class)
