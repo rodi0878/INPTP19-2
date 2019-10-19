@@ -14,7 +14,7 @@ public class DistanceMatrix {
         this.distances = distances;
     }
     
-    public double get(String from, String to) {
+    public double getDistanceBetweenLocations(String from, String to) {
         int fromIndex = getLocationIndex(from);
         int toIndex = getLocationIndex(to);
         

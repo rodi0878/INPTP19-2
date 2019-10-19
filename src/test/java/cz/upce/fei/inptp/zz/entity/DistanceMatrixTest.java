@@ -37,7 +37,7 @@ public class DistanceMatrixTest {
     public void testGetDistanceFromLocAToLocB() {
         DistanceMatrix dm = prepareDistanceMatrix();
 
-        double actual = dm.get("A", "B");
+        double actual = dm.getDistanceBetweenLocations("A", "B");
 
         assertEquals(1, actual, 0.01);
     }
@@ -46,7 +46,7 @@ public class DistanceMatrixTest {
     public void testGetDistanceFromUnknownToLocA() {
         DistanceMatrix dm = prepareDistanceMatrix();
 
-        double actual = dm.get("unkown", "B");
+        double actual = dm.getDistanceBetweenLocations("unkown", "B");
 
         fail();
     }
