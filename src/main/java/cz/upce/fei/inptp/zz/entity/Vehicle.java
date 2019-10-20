@@ -2,10 +2,6 @@ package cz.upce.fei.inptp.zz.entity;
 
 import java.util.Objects;
 
-/**
- *
- * @author Roman
- */
 public class Vehicle {
 
     private final String identifier;

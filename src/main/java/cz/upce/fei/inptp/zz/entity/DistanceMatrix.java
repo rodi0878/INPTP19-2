@@ -1,9 +1,5 @@
 package cz.upce.fei.inptp.zz.entity;
 
-/**
- *
- * @author Roman
- */
 public class DistanceMatrix {
 
     private String[] locations;
@@ -14,7 +10,7 @@ public class DistanceMatrix {
         this.distances = distances;
     }
     
-    public double get(String from, String to) {
+    public double getDistanceBetweenLocations(String from, String to) {
         int fromIndex = getLocationIndex(from);
         int toIndex = getLocationIndex(to);
         
