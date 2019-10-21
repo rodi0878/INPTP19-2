@@ -12,8 +12,8 @@ public class Main {
         DistanceMatrixLoader dml = new DistanceMatrixLoader("matrix1.csv");
         DistanceMatrix dm = dml.load();
         
-        System.out.println("A-C " + dm.get("A", "C"));
-        System.out.println("B-E " + dm.get("B", "E"));
-        System.out.println("D-D " + dm.get("D", "D"));
+        System.out.println("A-C " + dm.getDistanceBetweenLocations("A", "C"));
+        System.out.println("B-E " + dm.getDistanceBetweenLocations("B", "E"));
+        System.out.println("D-D " + dm.getDistanceBetweenLocations("D", "D"));
     }
 }
