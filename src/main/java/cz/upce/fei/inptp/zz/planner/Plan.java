@@ -1,17 +1,29 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package cz.upce.fei.inptp.zz.planner;
 
+import cz.upce.fei.inptp.zz.entity.Driver;
+import cz.upce.fei.inptp.zz.entity.Vehicle;
 import java.util.ArrayList;
+import java.util.List;
 
-/**
- *
- * @author Roman
- */
 public class Plan {
     
-    private ArrayList<PlanItem> plan;
+    private List<PlanItem> plan;
+
+    public Plan() {
+        plan = new ArrayList<>();
+    }
+
+    public List<PlanItem> getPlan() {
+        return plan;
+    }
+    
+    public PlanItem addNewVehiclePlan(Vehicle vehicle, Driver driver) {
+        PlanItem newplan = new PlanItem(vehicle, driver);
+        
+        plan.add(newplan);
+        // TODO: check duplicity of vehicle/driver in plan
+        
+        return newplan;
+    }
+    
 }
