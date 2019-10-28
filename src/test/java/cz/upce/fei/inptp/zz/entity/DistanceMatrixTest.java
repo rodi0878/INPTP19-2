@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package cz.upce.fei.inptp.zz.entity;
 
 import org.junit.After;
@@ -12,10 +7,6 @@ import org.junit.BeforeClass;
 import org.junit.Test;
 import static org.junit.Assert.*;
 
-/**
- *
- * @author Roman
- */
 public class DistanceMatrixTest {
 
     public DistanceMatrixTest() {
@@ -37,7 +28,7 @@ public class DistanceMatrixTest {
     public void testGetDistanceFromLocAToLocB() {
         DistanceMatrix dm = prepareDistanceMatrix();
 
-        double actual = dm.get("A", "B");
+        double actual = dm.getDistanceBetweenLocations("A", "B");
 
         assertEquals(1, actual, 0.01);
     }
@@ -46,7 +37,7 @@ public class DistanceMatrixTest {
     public void testGetDistanceFromUnknownToLocA() {
         DistanceMatrix dm = prepareDistanceMatrix();
 
-        double actual = dm.get("unkown", "B");
+        double actual = dm.getDistanceBetweenLocations("unkown", "B");
 
         fail();
     }
