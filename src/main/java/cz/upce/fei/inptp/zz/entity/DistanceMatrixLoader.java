@@ -13,11 +13,10 @@ public class DistanceMatrixLoader {
     private static final String COLUMN_SEPARATOR = ";";
 
     private String fileName;
-    private static Logger LOGGER;
+    private static Logger LOGGER = Logger.getLogger(DistanceMatrixLoader.class.getName());
 
     public DistanceMatrixLoader(String fileName) {
         this.fileName = fileName;
-        LOGGER = Logger.getLogger(DistanceMatrixLoader.class.getName());
     }
 
     public DistanceMatrix load() {
