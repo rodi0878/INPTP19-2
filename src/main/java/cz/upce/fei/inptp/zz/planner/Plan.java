@@ -17,13 +17,43 @@ public class Plan {
         return plan;
     }
     
+    /**
+     * @param vehicle needs to be unique for the whole plan otherwise throws {@link IllegalArgumentException}
+     * @param driver needs to be unique for the whole plan otherwise throws {@link IllegalArgumentException}
+     */
     public PlanItem addNewVehiclePlan(Vehicle vehicle, Driver driver) {
-        PlanItem newplan = new PlanItem(vehicle, driver);
+        if (containsVehicle(vehicle)) {
+            throw new IllegalArgumentException("Vehicle already used for this plan.");
+        }
+        if (containsDriver(driver)) {
+            throw new IllegalArgumentException("Driver already used for this plan.");
+        }
         
-        plan.add(newplan);
-        // TODO: check duplicity of vehicle/driver in plan
+        PlanItem planItem = new PlanItem(vehicle, driver);
         
-        return newplan;
+        plan.add(planItem);
+        
+        return planItem;
+    }
+    
+    private boolean containsVehicle(Vehicle vehicle) {
+        for (PlanItem item : plan) {
+            if (item.getVehicle().equals(vehicle)) {
+                return true;
+            }
+        }
+
+        return false;
+    }
+    
+    private boolean containsDriver(Driver driver) {
+        for (PlanItem item : plan) {
+            if (item.getDriver().equals(driver)) {
+                return true;
+            }
+        }
+
+        return false;
     }
     
 }
