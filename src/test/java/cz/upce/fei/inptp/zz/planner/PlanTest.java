@@ -22,7 +22,7 @@ public class PlanTest {
 
     @Test
     public void testAddNewVehiclePlan() {
-        Vehicle vehicle = new Vehicle("id", 10, VehicleType.Large);
+        Vehicle vehicle = new Vehicle("id", 10, VehicleType.Large,5);
         Driver driver = new Driver("driver");
         
         Plan plan = new Plan();
@@ -33,8 +33,8 @@ public class PlanTest {
 
     @Test(expected = IllegalArgumentException.class)
     public void testAddNewVehiclePlanDuplicateDriver() {
-        Vehicle vehicle = new Vehicle("id", 10, VehicleType.Large);
-        Vehicle vehicle2 = new Vehicle("id2", 5, VehicleType.Medium);
+        Vehicle vehicle = new Vehicle("id", 10, VehicleType.Large,5);
+        Vehicle vehicle2 = new Vehicle("id2", 5, VehicleType.Medium,5);
         Driver driver = new Driver("driver");
         
         Plan plan = new Plan();
@@ -44,7 +44,7 @@ public class PlanTest {
 
     @Test(expected = IllegalArgumentException.class)
     public void testAddNewVehiclePlanDuplicateVehicle() {
-        Vehicle vehicle = new Vehicle("id", 10, VehicleType.Large);
+        Vehicle vehicle = new Vehicle("id", 10, VehicleType.Large,5);
         Driver driver = new Driver("driver");
         Driver driver2 = new Driver("driver2");
         

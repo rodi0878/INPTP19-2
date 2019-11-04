@@ -13,7 +13,7 @@ public class PlanItemPriceCalculator {
         this.dm = dm;
     }
  
-    public int calculatePrice(PlanItem planItem) {
+    public double calculatePrice(PlanItem planItem) {
         List<Order> orders = planItem.getOrders();
         // TODO: tests
         String currentLocation = orders.get(0).getFrom();
@@ -23,14 +23,15 @@ public class PlanItemPriceCalculator {
             Order currentOrder = orders.get(i);
         
             boolean loading = true;
-            if (loadedOrders.contains(currentOrder))
+            if (loadedOrders.contains(currentOrder)) {
                 loading = false;
+            }
             
             String currentOrderLocation = loading ? currentOrder.getFrom() : currentOrder.getTo();
             
             if (!currentLocation.equals(currentOrderLocation)) {
                 price += dm.getDistanceBetweenLocations(currentLocation, currentOrderLocation);
-            // TODO: add coefficient for vehicle price per kilometer
+                price *= planItem.getVehicle().getPricePerKilometer();
             }
             
             
