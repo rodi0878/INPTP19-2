@@ -30,6 +30,8 @@ public class PlanItemTest {
         Order order = new Order("A", "B", 4);
         PlanItem planItem = new PlanItem(new Vehicle("idVehicle", 4, VehicleType.Medium), new Driver("idDriver"));
         planItem.addOrder(order);
+        List<Order> list = planItem.getOrders();
+        assertEquals(order, list.get(0));
     }
 
     
