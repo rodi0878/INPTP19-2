@@ -5,6 +5,7 @@ import cz.upce.fei.inptp.zz.entity.Order;
 import cz.upce.fei.inptp.zz.entity.Vehicle;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
 class PlanItem {
 
@@ -32,6 +33,7 @@ class PlanItem {
     }
     
     public void addOrder(Order order) {
+        Objects.requireNonNull(order, "Order cannot be null");
         orders.add(order);
     }
     

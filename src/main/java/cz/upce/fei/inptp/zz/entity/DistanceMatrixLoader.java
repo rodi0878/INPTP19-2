@@ -5,12 +5,15 @@ import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
 import java.util.Arrays;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 public class DistanceMatrixLoader {
 
     private static final String COLUMN_SEPARATOR = ";";
 
     private String fileName;
+    private static Logger LOGGER = Logger.getLogger(DistanceMatrixLoader.class.getName());
 
     public DistanceMatrixLoader(String fileName) {
         this.fileName = fileName;
@@ -26,7 +29,11 @@ public class DistanceMatrixLoader {
 
             return new DistanceMatrix(locations, distances);
         } catch (FileNotFoundException ex) {
+            LOGGER.log(Level.SEVERE, "File not found: ", ex);
         } catch (IOException ex) {
+            LOGGER.log(Level.SEVERE, "Input/Output exception: ", ex);
+        } catch(Exception ex){
+            LOGGER.log(Level.SEVERE, "Exception: ", ex);
         }
         
         return null;
