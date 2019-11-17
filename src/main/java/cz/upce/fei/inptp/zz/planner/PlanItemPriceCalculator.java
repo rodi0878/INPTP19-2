@@ -7,30 +7,29 @@ import java.util.List;
 
 public class PlanItemPriceCalculator {
     
-    DistanceMatrix dm;
+    private final DistanceMatrix distanceMatrix;
 
-    public PlanItemPriceCalculator(DistanceMatrix dm) {
-        this.dm = dm;
+    public PlanItemPriceCalculator(DistanceMatrix distanceMatrix) {
+        this.distanceMatrix = distanceMatrix;
     }
  
     public double calculatePrice(PlanItem planItem) {
         List<Order> orders = planItem.getOrders();
         // TODO: tests
+        double price = 0;
+        if(orders.isEmpty()){
+            return price;
+        }
         String currentLocation = orders.get(0).getFrom();
         HashSet<Order> loadedOrders = new HashSet<>();
-        int price = 0;
-        for (int i = 0; i < orders.size(); i++) {
-            Order currentOrder = orders.get(i);
-        
-            boolean loading = true;
-            if (loadedOrders.contains(currentOrder)) {
-                loading = false;
-            }
+        for (Order currentOrder : orders){
+            
+            boolean loading = !loadedOrders.contains(currentOrder);
             
             String currentOrderLocation = loading ? currentOrder.getFrom() : currentOrder.getTo();
             
             if (!currentLocation.equals(currentOrderLocation)) {
-                price += dm.getDistanceBetweenLocations(currentLocation, currentOrderLocation);
+                price += distanceMatrix.getDistanceBetweenLocations(currentLocation, currentOrderLocation);
                 price *= planItem.getVehicle().getPricePerKilometer();
             }
             
