@@ -7,10 +7,6 @@ import java.util.List;
 import org.junit.Test;
 import static org.junit.Assert.*;
 
-/**
- *
- * @author tomas
- */
 public class PlanTest {
 
     @Test
