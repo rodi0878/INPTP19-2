@@ -21,7 +21,7 @@ public class Plan {
      * @param vehicle needs to be unique for the whole plan otherwise throws {@link IllegalArgumentException}
      * @param driver needs to be unique for the whole plan otherwise throws {@link IllegalArgumentException}
      */
-    public PlanItem addNewVehiclePlan(Vehicle vehicle, Driver driver) {
+    public PlanItem addNewVehiclePlan(Vehicle vehicle, Driver driver, String vehicleStartingLocation) {
         if (containsVehicle(vehicle)) {
             throw new IllegalArgumentException("Vehicle already used for this plan.");
         }
@@ -29,7 +29,7 @@ public class Plan {
             throw new IllegalArgumentException("Driver already used for this plan.");
         }
         
-        PlanItem planItem = new PlanItem(vehicle, driver);
+        PlanItem planItem = new PlanItem(vehicle, driver, vehicleStartingLocation);
         
         plan.add(planItem);
         
