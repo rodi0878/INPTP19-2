@@ -10,13 +10,15 @@ public class Vehicle {
 
     private final VehicleType type;
 
+    private final int pricePerKilometer;
     // TODO:initial position?
 
     /**
      * 
      * @param capacity has to be a positive number.
+     * @param pricePerKilometer has to be a positive number.
      */
-    public Vehicle(String identifier, int capacity, VehicleType type) {
+    public Vehicle(String identifier, int capacity, VehicleType type, int pricePerKilometer) {
         this.identifier = Objects.requireNonNull(identifier, "id should not be null!");
         if (capacity <= 0) {
             String errorMessage = "Capacity should be non-zero and positive number. Received " + capacity;
@@ -24,6 +26,11 @@ public class Vehicle {
         }
         this.capacity = capacity;
         this.type = Objects.requireNonNull(type, "type should not be null!");
+        if (pricePerKilometer <= 0) {
+            String errorMessage = "Price per kilometer should be non-zero and positive number. Received " + pricePerKilometer;
+            throw new IllegalArgumentException(errorMessage);
+        }
+        this.pricePerKilometer = pricePerKilometer;
     }
 
     public String getIdentifier() {
@@ -36,5 +43,9 @@ public class Vehicle {
     
     public VehicleType getType() {
         return type;
+    }
+
+    public int getPricePerKilometer() {
+        return pricePerKilometer;
     }
 }

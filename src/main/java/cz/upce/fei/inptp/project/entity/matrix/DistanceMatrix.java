@@ -1,12 +1,18 @@
 package cz.upce.fei.inptp.project.entity.matrix;
 
+import java.util.HashMap;
+import java.util.Map;
+
 public class DistanceMatrix {
 
-    private String[] locations;
+    private Map<String, Integer> locations;
     private double[][] distances;
 
     public DistanceMatrix(String[] locations, double[][] distances) {
-        this.locations = locations;
+        this.locations = new HashMap<>();
+        for (int i = 0; i < locations.length; i++) {
+            this.locations.put(locations[i], i);
+        }
         this.distances = distances;
     }
     
@@ -18,13 +24,8 @@ public class DistanceMatrix {
     }
 
     private int getLocationIndex(String value) {
-        for (int i = 0; i < locations.length; i++) {
-            if (locations[i].equals(value)) {
-                return i;
-            }
-        }
-
-        return -1;
+        Integer index = locations.get(value);
+        return index == null ? -1 : index;
     }
     
 }
