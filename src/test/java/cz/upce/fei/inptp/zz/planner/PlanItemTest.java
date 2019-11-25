@@ -21,14 +21,14 @@ public class PlanItemTest {
     @Test(expected = RuntimeException.class)
     public void testAddOrderForNullValue() {
         Order order = null;
-        PlanItem planItem = new PlanItem(new Vehicle("idVehicle", 4, VehicleType.Medium), new Driver("idDriver"));
+        PlanItem planItem = new PlanItem(new Vehicle("idVehicle", 4, VehicleType.Medium, 125), new Driver("idDriver"), "unknownLocation");
         planItem.addOrder(order);
     }
     
     @Test
     public void testAddOrderForNonNullValue() {
         Order order = new Order("A", "B", 4);
-        PlanItem planItem = new PlanItem(new Vehicle("idVehicle", 4, VehicleType.Medium), new Driver("idDriver"));
+        PlanItem planItem = new PlanItem(new Vehicle("idVehicle", 4, VehicleType.Medium, 298), new Driver("idDriver"), "unknownLocation");
         planItem.addOrder(order);
         List<Order> list = planItem.getOrders();
         assertEquals(order, list.get(0));

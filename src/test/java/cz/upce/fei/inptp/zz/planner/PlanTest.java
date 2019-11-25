@@ -7,10 +7,6 @@ import java.util.List;
 import org.junit.Test;
 import static org.junit.Assert.*;
 
-/**
- *
- * @author tomas
- */
 public class PlanTest {
 
     @Test
@@ -26,7 +22,7 @@ public class PlanTest {
         Driver driver = new Driver("driver");
         
         Plan plan = new Plan();
-        plan.addNewVehiclePlan(vehicle, driver);
+        plan.addNewVehiclePlan(vehicle, driver, "unknownLocation");
         List<PlanItem> planItems = plan.getPlan();
         assertEquals(1, planItems.size());
     }
@@ -38,8 +34,8 @@ public class PlanTest {
         Driver driver = new Driver("driver");
         
         Plan plan = new Plan();
-        plan.addNewVehiclePlan(vehicle, driver);
-        plan.addNewVehiclePlan(vehicle2, driver);
+        plan.addNewVehiclePlan(vehicle, driver, "unknownLocation");
+        plan.addNewVehiclePlan(vehicle2, driver, "unknownLocation");
     }
 
     @Test(expected = IllegalArgumentException.class)
@@ -49,8 +45,8 @@ public class PlanTest {
         Driver driver2 = new Driver("driver2");
         
         Plan plan = new Plan();
-        plan.addNewVehiclePlan(vehicle, driver);
-        plan.addNewVehiclePlan(vehicle, driver2);
+        plan.addNewVehiclePlan(vehicle, driver, "unknownLocation");
+        plan.addNewVehiclePlan(vehicle, driver2, "unknownLocation");
     }
     
 }
