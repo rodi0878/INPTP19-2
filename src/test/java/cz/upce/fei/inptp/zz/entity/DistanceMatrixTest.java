@@ -1,9 +1,6 @@
 package cz.upce.fei.inptp.zz.entity;
 
-import org.junit.After;
-import org.junit.AfterClass;
-import org.junit.Before;
-import org.junit.BeforeClass;
+import cz.upce.fei.inptp.project.entity.matrix.DistanceMatrix;
 import org.junit.Test;
 import static org.junit.Assert.*;
 

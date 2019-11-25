@@ -1,7 +1,7 @@
-package cz.upce.fei.inptp.zz.planner;
+package cz.upce.fei.inptp.project.planner;
 
-import cz.upce.fei.inptp.zz.entity.Driver;
-import cz.upce.fei.inptp.zz.entity.Vehicle;
+import cz.upce.fei.inptp.project.entity.Driver;
+import cz.upce.fei.inptp.project.entity.vehicle.Vehicle;
 import java.util.ArrayList;
 import java.util.List;
 
