@@ -1,6 +1,5 @@
-package cz.upce.fei.inptp.zz.entity;
+package cz.upce.fei.inptp.project.entity;
 
-import cz.upce.fei.inptp.project.entity.Order;
 import org.junit.Test;
 import static org.junit.Assert.*;
 

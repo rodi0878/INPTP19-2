@@ -1,4 +1,4 @@
-package cz.upce.fei.inptp.zz.entity;
+package cz.upce.fei.inptp.project.entity;
 
 import cz.upce.fei.inptp.project.entity.vehicle.Vehicle;
 import cz.upce.fei.inptp.project.entity.vehicle.VehicleType;
