@@ -7,37 +7,37 @@ import java.util.List;
 
 public class Plan {
     
-    private List<PlanItem> plan;
+    private List<PlanItem> planItems;
 
     public Plan() {
-        plan = new ArrayList<>();
+        planItems = new ArrayList<>();
     }
 
-    public List<PlanItem> getPlan() {
-        return plan;
+    public List<PlanItem> getPlanItems() {
+        return planItems;
     }
     
     /**
-     * @param vehicle needs to be unique for the whole plan otherwise throws {@link IllegalArgumentException}
-     * @param driver needs to be unique for the whole plan otherwise throws {@link IllegalArgumentException}
+     * @param vehicle needs to be unique for the whole planItems otherwise throws {@link IllegalArgumentException}
+     * @param driver needs to be unique for the whole planItems otherwise throws {@link IllegalArgumentException}
      */
     public PlanItem addNewVehiclePlan(Vehicle vehicle, Driver driver, String vehicleStartingLocation) {
         if (containsVehicle(vehicle)) {
-            throw new IllegalArgumentException("Vehicle already used for this plan.");
+            throw new IllegalArgumentException("Vehicle already used for this planItems.");
         }
         if (containsDriver(driver)) {
-            throw new IllegalArgumentException("Driver already used for this plan.");
+            throw new IllegalArgumentException("Driver already used for this planItems.");
         }
         
         PlanItem planItem = new PlanItem(vehicle, driver, vehicleStartingLocation);
         
-        plan.add(planItem);
+        planItems.add(planItem);
         
         return planItem;
     }
     
     private boolean containsVehicle(Vehicle vehicle) {
-        for (PlanItem item : plan) {
+        for (PlanItem item : planItems) {
             if (item.getVehicle().equals(vehicle)) {
                 return true;
             }
@@ -47,7 +47,7 @@ public class Plan {
     }
     
     private boolean containsDriver(Driver driver) {
-        for (PlanItem item : plan) {
+        for (PlanItem item : planItems) {
             if (item.getDriver().equals(driver)) {
                 return true;
             }
