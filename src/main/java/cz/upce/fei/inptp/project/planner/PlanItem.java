@@ -36,6 +36,9 @@ public class PlanItem {
 
     public void addOrder(Order order) {
         Objects.requireNonNull(order, "Order cannot be null");
+        if (order.getCapacity() > vehicle.getCapacity()){
+            throw new IllegalArgumentException("Order capacity cannot be greater than vehicle capacity");
+        }
         orders.add(order);
     }
 
