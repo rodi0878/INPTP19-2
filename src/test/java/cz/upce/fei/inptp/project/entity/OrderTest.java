@@ -1,4 +1,4 @@
-package cz.upce.fei.inptp.zz.entity;
+package cz.upce.fei.inptp.project.entity;
 
 import org.junit.Test;
 import static org.junit.Assert.*;

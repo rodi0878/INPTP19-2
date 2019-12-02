@@ -1,7 +1,7 @@
-package cz.upce.fei.inptp.zz;
+package cz.upce.fei.inptp.project;
 
-import cz.upce.fei.inptp.zz.entity.DistanceMatrix;
-import cz.upce.fei.inptp.zz.entity.DistanceMatrixLoader;
+import cz.upce.fei.inptp.project.entity.matrix.DistanceMatrix;
+import cz.upce.fei.inptp.project.entity.matrix.DistanceMatrixLoader;
 
 /**
  * VRP planner. Simple application to solve basic VRP. More will come later...

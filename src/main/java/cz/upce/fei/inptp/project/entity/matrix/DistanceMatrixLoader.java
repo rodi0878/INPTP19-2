@@ -1,4 +1,4 @@
-package cz.upce.fei.inptp.zz.entity;
+package cz.upce.fei.inptp.project.entity.matrix;
 
 import java.io.BufferedReader;
 import java.io.FileNotFoundException;
