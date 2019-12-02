@@ -1,7 +1,7 @@
-package cz.upce.fei.inptp.zz.planner;
+package cz.upce.fei.inptp.project.planner;
 
-import cz.upce.fei.inptp.zz.entity.DistanceMatrix;
-import cz.upce.fei.inptp.zz.entity.Order;
+import cz.upce.fei.inptp.project.entity.matrix.DistanceMatrix;
+import cz.upce.fei.inptp.project.entity.Order;
 import java.util.HashSet;
 import java.util.List;
 

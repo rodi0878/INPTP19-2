@@ -1,6 +1,7 @@
-package cz.upce.fei.inptp.zz.entity;
+package cz.upce.fei.inptp.project.entity;
 
 import static org.junit.Assert.*;
+
 import org.junit.Test;
 
 public class DriverTest {
