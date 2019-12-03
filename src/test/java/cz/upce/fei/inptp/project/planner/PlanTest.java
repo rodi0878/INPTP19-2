@@ -12,7 +12,7 @@ public class PlanTest {
     @Test
     public void testGetPlanEmpty() {
         Plan plan = new Plan();
-        List<PlanItem> planItems = plan.getPlan();
+        List<PlanItem> planItems = plan.getPlanItems();
         assertEquals(0, planItems.size());
     }
 
@@ -23,7 +23,7 @@ public class PlanTest {
         
         Plan plan = new Plan();
         plan.addNewVehiclePlan(vehicle, driver, "unknownLocation");
-        List<PlanItem> planItems = plan.getPlan();
+        List<PlanItem> planItems = plan.getPlanItems();
         assertEquals(1, planItems.size());
     }
 
