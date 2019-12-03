@@ -43,7 +43,7 @@ public class PlanItemTest {
         assertEquals(order, list.get(0));
     }
 
-    @Test (expected = Exception.class)
+    @Test (expected = IllegalArgumentException.class)
     public void testAddOrderImpossibleCapacity() {
         Order order = new Order("A", "B", 101);
         Vehicle vehicle = new Vehicle("idVehicle", 100, VehicleType.Medium, 100);
