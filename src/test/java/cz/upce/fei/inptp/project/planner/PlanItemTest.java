@@ -32,6 +32,30 @@ public class PlanItemTest {
         assertEquals(order, list.get(0));
     }
 
+    @Test
+    public void testAddOrderPossibleCapacity() {
+        Order order = new Order("A", "B", 100);
+        Vehicle vehicle = new Vehicle("idVehicle", 100, VehicleType.Medium, 100);
+        Driver driver = new Driver("idDriver");
+        PlanItem planItem = new PlanItem(vehicle, driver, "unknownLocation");
+        planItem.addOrder(order);
+        List<Order> list = planItem.getOrders();
+        assertEquals(order, list.get(0));
+    }
+
+    @Test (expected = IllegalArgumentException.class)
+    public void testAddOrderImpossibleCapacity() {
+        Order order = new Order("A", "B", 101);
+        Vehicle vehicle = new Vehicle("idVehicle", 100, VehicleType.Medium, 100);
+        Driver driver = new Driver("idDriver");
+        PlanItem planItem = new PlanItem(vehicle, driver, "unknownLocation");
+        planItem.addOrder(order);
+
+        fail();
+    }
+
+
+
     
     
 }
