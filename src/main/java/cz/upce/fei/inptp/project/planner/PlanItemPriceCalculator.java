@@ -2,6 +2,8 @@ package cz.upce.fei.inptp.project.planner;
 
 import cz.upce.fei.inptp.project.entity.matrix.DistanceMatrix;
 import cz.upce.fei.inptp.project.entity.Order;
+import cz.upce.fei.inptp.project.entity.vehicle.Vehicle;
+
 import java.util.HashSet;
 import java.util.List;
 
@@ -12,6 +14,13 @@ public class PlanItemPriceCalculator {
     public PlanItemPriceCalculator(DistanceMatrix distanceMatrix) {
         this.distanceMatrix = distanceMatrix;
     }
+
+    private double calculatePricePerMovedKilometers(String from, String to, Vehicle vehicle) {
+        double price = distanceMatrix.getDistanceBetweenLocations(from, to);
+        price *= vehicle.getPricePerKilometer();
+        return price;
+    }
+
 
     public double calculatePrice(PlanItem planItem) {
         // TODO: tests
@@ -37,16 +46,19 @@ public class PlanItemPriceCalculator {
         // - all changes must be supported by tests to determine that algorithm is correct!
         
 
-        for (int i = 0; i < orders.size(); i++) {
-            Order currentOrder = orders.get(i);
 
+        for (Order currentOrder : orders) {
             boolean loading = !loadedOrders.contains(currentOrder);
             String currentOrderLocation = loading ? currentOrder.getFrom() : currentOrder.getTo();
             
             if (!currentLocation.equals(currentOrderLocation)) {
-                price += distanceMatrix.getDistanceBetweenLocations(currentLocation, currentOrderLocation);
-                price *= planItem.getVehicle().getPricePerKilometer();
+
+                price += calculatePricePerMovedKilometers(currentLocation,
+                        currentOrderLocation, planItem.getVehicle());
             }
+            price += calculatePricePerMovedKilometers(currentOrder.getFrom(),
+                    currentOrder.getTo(), planItem.getVehicle());
+
 
             // ... loading/unloading of order ...
             // TODO: add coefficient for order price per capacity unit
